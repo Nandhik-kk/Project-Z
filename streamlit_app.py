@@ -1,6 +1,7 @@
 import streamlit as st
 
-st.title("🎈 Kalkulator Z")
+st.title("Kalkulator Z")
+st.title("_Kalkulator_ itu :blue[keren] :sunglasses:")
 st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
+    "Ayo berhitung, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
 )

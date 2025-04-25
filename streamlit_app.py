@@ -43,3 +43,8 @@ with st.expander("💡 Apa itu Kalkulator Jejak Karbon?"):
 # Tombol untuk lanjut
 if st.button("Mulai Hitung Sekarang 🚀"):
     st.success("Silakan lanjut ke bagian input data 👇 (belum dibuat di tahap ini)")
+# Tampilkan animasi kalau berhasil
+if lottie_earth:
+    st_lottie(lottie_earth, height=300, key="earth")
+else:
+    st.warning("⚠️ Animasi tidak bisa dimuat. Periksa koneksi atau URL animasi.")

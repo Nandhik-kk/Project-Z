@@ -1,35 +1,20 @@
 import streamlit as st
-import time
+from github import Github
 
-# Animasi judul dengan efek ketik
-def animated_title(text, delay=0.1):
-    placeholder = st.empty()
-    current_text = ""
-    for char in text:
-        current_text += char
-        placeholder.title(current_text)
-        time.sleep(delay)
+# Koneksi ke GitHub
+g = Github(st.secrets["GITHUB_TOKEN"])
+repo = g.get_repo("username/repo-lingkungan")
 
-# Judul utama dengan animasi ketik
-animated_title("Kalkulator Cinta 💖")
+# Ambil data polusi dari repo
+def load_pollution_data():
+    contents = repo.get_contents("data/polution.csv")
+    return pd.read_csv(contents.download_url)
 
-# Subjudul biasa
-st.title("_Azlina_ sayang :red[Danapati] ❤️")
+# Tampilkan peta
+st.map(load_pollution_data())
 
-# Tulisan tambahan
-st.write("Ayo berhitung, head over to [docs.streamlit.io](https://docs.streamlit.io/).")
-
-# Tambahan emoji bergerak (secara simulasi)
-with st.spinner('Menghitung rasa cinta... 💘'):
-    time.sleep(2)
-
-st.success("Cinta 100%! Kamu dan dia cocok banget 😍💯")
-
-# Tambahan select box buat variasi
-pilihan = st.selectbox("Menurutmu, cinta itu seperti...", 
-                       ["Bunga mekar di musim semi 🌸", 
-                        "Teh hangat di sore hari 🍵", 
-                        "Sinyal WiFi yang full 📶", 
-                        "Kalkulator yang selalu tepat ❤️"])
-
-st.write(f"Kamu memilih: *{pilihan}*")
+# Form laporan lingkungan
+with st.form("laporan"):
+    issue = st.text_input("Deskripsi Masalah")
+    if st.form_submit_button("Submit"):
+        repo.create_issue(title=issue, labels=["environment"])

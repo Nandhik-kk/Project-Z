@@ -20,7 +20,7 @@ st.markdown("""
     <div style="text-align:center; padding:20px;">
         <h1 style="color:#3C6E47;">🌍 Kalkulator Jejak Karbon</h1>
         <p style="font-size:18px; color:#5A5A5A;">
-        Hitung jejak karbonmu dan bergabung dalam aksi kolektif 🌱 By: ZP</p>
+        Hitung jejak karbonmu dan bergabung dalam aksi kolektif 🌱</p>
     </div>
 """, unsafe_allow_html=True)
 
